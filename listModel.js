@@ -5,8 +5,26 @@ module.exports = class ListModel {
     this.items = [];
   }
 
-  getAll() {
-    return this.items;
+  get(query, callback) {
+    let queryType = typeof query;
+    callback = callback || function () {};
+
+    if(!query) {
+      callback.call(this, this.items);
+      return this.items;
+    } else if (queryType === 'function') {
+      callback = query;
+      callback.call(this, this.items);
+      return this.items;
+    } else if (queryType === 'number') {
+      let item = this.items[query];
+      callback.call(this, item[0]);
+      return item[0];
+    } else if (queryType === 'string') {
+      let item = this.items.filter((item) => {return item.title === query; });
+      callback.call(this, item[0]);
+      return item[0];
+    }
   }
 
   add(title, callback) {
