@@ -4,23 +4,21 @@ const ListModel = require('./listModel');
 
 let list = new ListModel();
 
-list.add('Learn HTML', (newItem) => { console.log(newItem.title); });
-list.add('Learn CSS', (newItem) => { console.log(newItem.title); });
-list.add('Learn JS', (newItem) => { console.log(newItem.title); });
+list.add('Learn HTML', () => { });
+list.add('Learn CSS', () => { });
+list.add('Learn JS', () => { });
 
 console.log(list.get());
 
-list.remove(1, (item) => { console.log(item.title); });
+list.remove(1, () => { });
 
 console.log(list.get());
 
 console.log(list.get('Learn HTML'));
 
-list.getCount((quan) => {
-  console.log(quan.active);
-  console.log(quan.completed);
-  console.log(quan.total);
-
-});
+let countObj = list.getCount();
+console.log(countObj.completed);
+console.log(countObj.active);
+console.log(countObj.total);
 
 list.drop((items) => { console.log(items) });
