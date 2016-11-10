@@ -13,3 +13,14 @@ console.log(list.get());
 list.remove(1, (item) => { console.log(item.title); });
 
 console.log(list.get());
+
+console.log(list.get('Learn HTML'));
+
+list.getCount((quan) => {
+  console.log(quan.active);
+  console.log(quan.completed);
+  console.log(quan.total);
+
+});
+
+list.drop((items) => { console.log(items) });
