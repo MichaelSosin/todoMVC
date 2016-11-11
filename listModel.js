@@ -7,23 +7,25 @@ module.exports = class ListModel {
   }
   // returns item by id or by title from the list, if no query is defined - returns all list
   get(query, callback) {
-    let queryType = typeof query;
+    let queryType = typeof query,
+        response;
 
     if(!query) {
-      return this.items;
+      response = this.items;
     } else if (queryType === 'function') {
       callback = query;
-      return this.items;
+      response = this.items;
     } else if (queryType === 'number') {
       let item = this.items[query];
-      return item[0];
+      response = item[0];
     } else if (queryType === 'string') {
       let item = this.items.filter((item) => {return item.title === query; });
-      return item[0];
+      response = item[0];
     }
     if(callback) {
-      callback();
+      callback(response);
     }
+    return response;
   }
   // adds item to the list and assign completed to false
   add(title, callback) {
@@ -36,7 +38,7 @@ module.exports = class ListModel {
 
     this.items.push(newItem);
     if(callback) {
-      callback();
+      callback(newItem);
     }
   }
   // counts completed, active and total items in list
