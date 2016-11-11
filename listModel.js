@@ -6,7 +6,7 @@ module.exports = class ListModel {
     this.items = [];
   }
 
-  // returns item by id or by title, if no query is defined - returns all list
+  // returns item by id or by title, if no query is defined - returns whole list
   get(query, callback) {
     let queryType = typeof query,
         response;
@@ -33,7 +33,7 @@ module.exports = class ListModel {
     return response;
   }
 
-  // adds item to the list, assign completed to false and returns item
+  // adds item to the list, assign completed to false and returns this item
   add(title, callback) {
     if(typeof title === 'function' || !title) {
       return;
