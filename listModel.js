@@ -6,7 +6,7 @@ module.exports = class ListModel {
     this.items = [];
   }
 
-  // returns item by id or by title from the list, if no query is defined - returns all list
+  // returns item by id or by title, if no query is defined - returns all list
   get(query, callback) {
     let queryType = typeof query,
         response;
@@ -33,7 +33,7 @@ module.exports = class ListModel {
     return response;
   }
 
-  // adds item to the list and assign completed to false
+  // adds item to the list, assign completed to false and returns item
   add(title, callback) {
     if(typeof title === 'function' || !title) {
       return;
@@ -56,7 +56,7 @@ module.exports = class ListModel {
     return newItem;
   }
 
-  // counts completed, active and total items in list
+  // counts completed, active and total items in list and returns an object
   getCount(callback) {
     let quantity = {
       active: 0,
@@ -102,7 +102,7 @@ module.exports = class ListModel {
     if(typeof callback === 'function') {
       callback(this.items);
     }
-    
+
     return this.items;
 
   }
