@@ -82,20 +82,28 @@ module.exports = class ListModel {
 
   // removes item by id (number in list) and returns it
   remove(id, callback) {
-    if(!id) {
-      return;
-    }
+    if(typeof id === 'number') {
+      let removedItem = this.items.splice(id, 1)[0];
+      
+      if(typeof callback === 'function') {
+        callback(removedItem);
+      }
 
-    this.items.splice(id, 1);
-    if(callback) {
-      callback();
+      return removedItem;
     }
+    
+    return;
   }
 
   // removes all items from the list and returns empty list
   drop(callback) {
     this.items = [];
-    callback.call(this, this.items);
+
+    if(typeof callback === 'function') {
+      callback(this.items);
+    }
+    
     return this.items;
+
   }
 }
