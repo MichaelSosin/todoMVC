@@ -5,42 +5,57 @@ module.exports = class ListModel {
     // the todo list
     this.items = [];
   }
+
   // returns item by id or by title from the list, if no query is defined - returns all list
   get(query, callback) {
     let queryType = typeof query,
         response;
 
-    if(!query) {
-      response = this.items;
-    } else if (queryType === 'function') {
-      callback = query;
-      response = this.items;
-    } else if (queryType === 'number') {
-      let item = this.items[query];
-      response = item[0];
-    } else if (queryType === 'string') {
-      let item = this.items.filter((item) => {return item.title === query; });
-      response = item[0];
+    switch(queryType) {
+      case 'function':
+        callback = query;
+        response = this.items;
+        break;
+      case 'number':
+        response = this.items[query];
+        break;
+      case 'string':
+        response = this.items.filter((item) => {return item.title === query; })[0];
+        break;
+      default:
+        response = this.items;
     }
-    if(callback) {
+    
+    if(typeof callback === 'function') {
       callback(response);
     }
+
     return response;
   }
+
   // adds item to the list and assign completed to false
   add(title, callback) {
-    title = title || '';
-
-    let newItem = {
-      title: title.trim(),
-      completed: false
+    if(typeof title === 'function' || !title) {
+      return;
     }
 
-    this.items.push(newItem);
-    if(callback) {
+    let newItem = {};
+
+    if(title) {
+      newItem = {
+        title: title.trim(),
+        completed: false
+      };
+      this.items.push(newItem);
+    }
+
+    if(typeof callback === 'function') {
       callback(newItem);
     }
+
+    return newItem;
   }
+
   // counts completed, active and total items in list
   getCount(callback) {
     let quantity = {
@@ -57,9 +72,11 @@ module.exports = class ListModel {
       }
       quantity.total++;
     });
-    if(callback) {
-      callback();
+
+    if(typeof callback === 'function') {
+      callback(quantity);
     }
+
     return quantity;
   }
 
