@@ -1,0 +1,15 @@
+$body-bg-color: #686;
+$app-bg-color: #989;
+$app-width: 500px;
+$app-heigth: 500px;
+
+body {
+    background-color: $body-bg-color;
+
+    #todo-app {
+        margin: 50px auto;
+        width: $app-width;
+        min-height: $app-heigth;
+        background-color: $app-bg-color;
+    }
+}

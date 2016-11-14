@@ -8,6 +8,7 @@ class ListTemplate {
     _getItem(item, id) {
         return  `<li data-id=${id} class="list-item ${item.completed || ''}">
                     <span>${item.title}</span>
+                    <button class="done-button">DONE</button>                    
                     <button class="remove-button">-</button>
                 </li>`;
     }

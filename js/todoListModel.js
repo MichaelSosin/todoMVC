@@ -19,15 +19,17 @@ class TodoListModel {
         this.listChanged.notify();
     }
 
+    complete(id) {
+        let item = this.get(id);
+        item.complete = true;
+        this.listChanged.notify();        
+    }
+
     getCount() {
         return this.list.getCount();
     }
 
     remove(id) {
-        if(!id) {
-            this.list.drop();
-        }
-
         this.list.remove(id);
         console.log(this.list);
         this.listChanged.notify();

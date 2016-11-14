@@ -1,0 +1,7 @@
+body {
+  background-color: #686; }
+  body #todo-app {
+    margin: 50px auto;
+    width: 500px;
+    min-height: 500px;
+    background-color: #989; }

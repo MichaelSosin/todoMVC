@@ -29,6 +29,16 @@ class TodoListView {
       });
     }
 
+    completeButtonHandler(handler) {
+      this.dom.list.addEventListener('click', (e) => {
+        if (e.target.className === 'done-button') {
+          let id = e.target.parentNode.attributes['data-id'].value;
+          console.log(id);
+          handler(parseInt(id));
+        }
+      });
+    }
+
     removeButtonHandler(handler) {
       this.dom.list.addEventListener('click', (e) => {
         if (e.target.className === 'remove-button') {
