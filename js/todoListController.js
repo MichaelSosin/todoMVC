@@ -1,21 +1,20 @@
 'use strict';
 
-// module.exports = 
+// module.exports =
 class TodoListController {
     constructor() {
         this.model = new TodoListModel();
         this.view = new TodoListView(this.model);
+        this.view.addButtonHandler((title) => {
+          this.model.add(title);
+        });
+        this.view.removeButtonHandler((id) => {
+          this.model.remove(id);
+        });
     }
 
-    render() {
-        this.view.render();
-    }
+    // render() {
+    //     this.view.render();
+    // }
 
-    add(title) {
-        this.model.add(title);
-    }
-
-    remove(id) {
-        this.model.remove(id);
-    }
 }

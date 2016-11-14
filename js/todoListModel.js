@@ -3,7 +3,7 @@
 // const Observer = require('./observer');
 // const TodoList = require('./todoList');
 
-// module.exports = 
+// module.exports =
 class TodoListModel {
     constructor() {
         this.list = new TodoList();
@@ -15,7 +15,8 @@ class TodoListModel {
     }
 
     add(title) {
-        return this.list.add(title, (item) => this.listChanged.notify(item) );
+        this.list.add(title);
+        this.listChanged.notify();
     }
 
     getCount() {
@@ -24,9 +25,11 @@ class TodoListModel {
 
     remove(id) {
         if(!id) {
-            return this.list.drop((items) => this.listChanged.notify(items));
+            this.list.drop();
         }
 
-        return this.list.remove(id,(item) => this.listChanged.notify(item));
+        this.list.remove(id);
+        console.log(this.list);
+        this.listChanged.notify();
     }
 }
