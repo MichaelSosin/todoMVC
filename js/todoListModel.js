@@ -20,8 +20,8 @@ class TodoListModel {
     }
 
     complete(id) {
-        let item = this.get(id);
-        item.complete = true;
+        let item = this.list.get(id);
+        item.completed = true;
         this.listChanged.notify();        
     }
 

@@ -15,9 +15,4 @@ class TodoListController {
           this.model.remove(id);
         });
     }
-
-    // render() {
-    //     this.view.render();
-    // }
-
 }

@@ -25,15 +25,17 @@ class TodoListView {
 
     addButtonHandler(handler) {
       this.dom.addButton.addEventListener('click', () => {
-        handler(this.getValue());
+        let title = this.getValue(); 
+        if(title) {
+          handler(title);
+        }
       });
     }
 
     completeButtonHandler(handler) {
       this.dom.list.addEventListener('click', (e) => {
-        if (e.target.className === 'done-button') {
-          let id = e.target.parentNode.attributes['data-id'].value;
-          console.log(id);
+        if (e.target.classList.contains('done-button')) {
+          let id = e.target.parentNode.parentNode.attributes['data-id'].value;
           handler(parseInt(id));
         }
       });
@@ -41,8 +43,8 @@ class TodoListView {
 
     removeButtonHandler(handler) {
       this.dom.list.addEventListener('click', (e) => {
-        if (e.target.className === 'remove-button') {
-          let id = e.target.parentNode.attributes['data-id'].value;
+        if (e.target.classList.contains('remove-button')) {
+          let id = e.target.parentNode.parentNode.attributes['data-id'].value;
           handler(parseInt(id));
         }
       });

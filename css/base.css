@@ -1,7 +1,66 @@
 body {
-  background-color: #686; }
+  background-color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px; }
   body #todo-app {
     margin: 50px auto;
+    border-radius: 5px;
     width: 500px;
-    min-height: 500px;
-    background-color: #989; }
+    min-height: 20px;
+    background-color: #872341;
+    color: #eee;
+    box-shadow: 0 0 7.5px #2F1B41; }
+    body #todo-app .button {
+      background-color: #BE3144;
+      width: 75px;
+      color: #eee;
+      border: none;
+      border-radius: 2px;
+      line-height: 25px;
+      box-shadow: 0 0 7.5px #2F1B41; }
+    body #todo-app .button:hover {
+      background-color: #F05941; }
+    body #todo-app .app-header {
+      text-align: center;
+      font-size: 30px;
+      line-height: 75px;
+      border-radius: 5px 5px 0 0;
+      background-color: #2F1B41; }
+    body #todo-app .todo-list {
+      padding: 0 12.5px;
+      margin: 0;
+      list-style: none; }
+      body #todo-app .todo-list .list-item {
+        margin-bottom: 12.5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap; }
+        body #todo-app .todo-list .list-item .title {
+          flex-grow: 3;
+          max-width: 300px;
+          overflow-x: hidden; }
+        body #todo-app .todo-list .list-item .button {
+          flex-grow: 1; }
+      body #todo-app .todo-list .completed .title {
+        text-decoration: line-through;
+        /*color: #777;*/
+        opacity: .5; }
+    body #todo-app .input-container {
+      padding: 12.5px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap; }
+      body #todo-app .input-container .new-todo {
+        background-color: #F05941;
+        padding: 1px 25px;
+        color: #eee;
+        font-size: 18.75px;
+        line-height: 25px;
+        border: none;
+        border-radius: 2px; }
+      body #todo-app .input-container .new-todo:focus {
+        box-shadow: inset 0 0 15px #BE3144; }

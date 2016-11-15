@@ -1,15 +1,97 @@
-$body-bg-color: #686;
-$app-bg-color: #989;
+$body-bg-color: #444;
+$app-bg-color: #872341;
+$header-bg-color: #2F1B41;
+$button-bg-color: #BE3144;
+$input-bg-color: #F05941;
+$text-color: #eee;
 $app-width: 500px;
-$app-heigth: 500px;
+$app-heigth: 20px;
+$button-width: 75px;
+$em: 25px; 
 
 body {
     background-color: $body-bg-color;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: $em;
 
     #todo-app {
         margin: 50px auto;
+        border-radius: 5px;
         width: $app-width;
         min-height: $app-heigth;
         background-color: $app-bg-color;
+        color: $text-color;
+        box-shadow: 0 0 0.3*$em $header-bg-color;        
+
+        .button {
+            background-color: $button-bg-color;
+            width: $button-width;            
+            color: $text-color;
+            border: none;
+            border-radius: 2px;
+            line-height: $em;
+            box-shadow: 0 0 0.3*$em $header-bg-color;
+        }
+        .button:hover {
+            background-color: $input-bg-color;
+        }
+
+        .app-header {
+            text-align: center;
+            font-size: 1.2*$em;
+            line-height: 3*$em;
+            border-radius: 5px 5px 0 0;
+            background-color: $header-bg-color;
+        }
+
+        .todo-list {
+            padding: 0 0.5*$em;
+            margin: 0;
+            list-style: none;
+
+            .list-item {
+                margin-bottom: 0.5*$em;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: nowrap;
+                .title {
+                    flex-grow: 3;
+                    max-width: 300px;
+                    overflow-x: hidden;
+                } 
+                .button {
+                    flex-grow: 1;
+                }
+            }
+            .completed {
+                .title {            
+                    text-decoration: line-through;
+                    /*color: #777;*/
+                    opacity: .5;
+                }
+            }
+        }
+        .input-container {
+            padding: 0.5*$em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            .new-todo {
+                background-color: $input-bg-color;
+                padding: 1px $em;
+                color: $text-color;
+                font-size: 0.75*$em;
+                line-height: $em;
+                border: none;
+                border-radius: 2px;                
+            }
+            .new-todo:focus {
+                box-shadow: inset 0 0 15px $button-bg-color;
+            }
+        }
     }
 }

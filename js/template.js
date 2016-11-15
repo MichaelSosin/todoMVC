@@ -6,10 +6,16 @@ class ListTemplate {
     }
 
     _getItem(item, id) {
-        return  `<li data-id=${id} class="list-item ${item.completed || ''}">
-                    <span>${item.title}</span>
-                    <button class="done-button">DONE</button>                    
-                    <button class="remove-button">-</button>
+        let completed = item.completed ? 'completed' : '';
+        let inactiveButton = item.completed ? 'disabled' : '';
+        
+
+        return  `<li data-id=${id} class="list-item ${completed}">
+                    <span class="title">${item.title}</span>
+                    <div class="buttons-container">
+                        <button class="button done-button" ${inactiveButton}>DONE</button>                    
+                        <button class="button remove-button">DELETE</button>
+                    </div>
                 </li>`;
     }
 
