@@ -1,0 +1,31 @@
+{
+  "name": "todo-mvc",
+  "version": "1.0.0",
+  "description": "learn mvc",
+  "main": "index.html",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelSosin/todoMVC.git"
+  },
+  "keywords": [
+    "mvc",
+    "todo"
+  ],
+  "author": "MichaelSosin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichaelSosin/todoMVC/issues"
+  },
+  "homepage": "https://github.com/MichaelSosin/todoMVC#readme"
+}
