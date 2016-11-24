@@ -1,13 +1,17 @@
-'use strict';
+'use strict'
 
-// module.exports =
 class ListTemplate {
     constructor() {
+        this.dom = {
+            list: document.getElementsByClassName('todo-list')[0],
+            newTodo: document.getElementsByClassName('new-todo')[0],
+            addButton: document.getElementsByClassName('add-button')[0]
+        }
     }
 
     _getItem(item, id) {
-        let completed = item.completed ? 'completed' : '';
-        let inactiveButton = item.completed ? 'disabled' : '';
+        let completed = item.completed ? 'completed' : ''
+        let inactiveButton = item.completed ? 'disabled' : ''
         
 
         return  `<li data-id=${id} class="list-item ${completed}">
@@ -16,12 +20,12 @@ class ListTemplate {
                         <button class="button done-button" ${inactiveButton}>DONE</button>                    
                         <button class="button remove-button">DELETE</button>
                     </div>
-                </li>`;
+                </li>`
     }
 
     getList(list) {
-        let html = '';
-        list.map( (item) => html += this._getItem(item, list.indexOf(item)) );
-        return html;
+        let html = ''
+        list.map( item => html += this._getItem(item, list.indexOf(item)) )
+        return html
     }
 }

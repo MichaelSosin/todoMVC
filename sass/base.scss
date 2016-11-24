@@ -1,4 +1,4 @@
-$body-bg-color: #444;
+$body-bg-color: #999;
 $app-bg-color: #872341;
 $header-bg-color: #2F1B41;
 $button-bg-color: #BE3144;
@@ -28,7 +28,7 @@ body {
             width: $button-width;            
             color: $text-color;
             border: none;
-            border-radius: 2px;
+            border-radius: 4px;
             line-height: $em;
             box-shadow: 0 0 0.3*$em $header-bg-color;
         }
@@ -73,6 +73,7 @@ body {
                 }
             }
         }
+
         .input-container {
             padding: 0.5*$em;
             display: flex;
@@ -81,16 +82,16 @@ body {
             align-items: center;
             flex-wrap: nowrap;
             .new-todo {
-                background-color: $input-bg-color;
+                background-color: $header-bg-color;
                 padding: 1px $em;
                 color: $text-color;
                 font-size: 0.75*$em;
                 line-height: $em;
                 border: none;
-                border-radius: 2px;                
+                border-radius: 4px;                
             }
             .new-todo:focus {
-                box-shadow: inset 0 0 15px $button-bg-color;
+                box-shadow: inset 0 0 15px $header-bg-color;
             }
         }
     }
