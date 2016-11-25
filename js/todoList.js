@@ -9,7 +9,7 @@ class TodoList {
   // returns item by id or by title, if no query is defined - returns whole list
   get(query, callback) {
     let queryType = typeof query
-    let response
+    let response = {}
 
     switch(queryType) {
       case 'function':
@@ -39,15 +39,12 @@ class TodoList {
       throw new Error('Missing title')
     }
 
-    let newItem = {}
-
-    if(title) {
-      newItem = {
-        title: title.trim(),
-        completed: false
-      }
-      this.items.push(newItem)
+    let newItem = {
+      title: title.trim(),
+      completed: false
     }
+
+    this.items.push(newItem)
 
     if(typeof callback === 'function') {
       callback(newItem)
@@ -58,7 +55,7 @@ class TodoList {
 
   // counts completed, active and total items in list and returns an object
   getCount(callback) {
-    let quantity = {
+    let count = {
       active: 0,
       completed: 0,
       total: 0
@@ -66,33 +63,31 @@ class TodoList {
 
     this.items.forEach(item => {
       if(item.completed) {
-        quantity.completed++
+        count.completed++
       } else {
-        quantity.active++
+        count.active++
       }
-      quantity.total++
+      count.total++
     })
 
     if(typeof callback === 'function') {
-      callback(quantity)
+      callback(count)
     }
 
-    return quantity
+    return count
   }
 
   // removes item by id (number in list) and returns it
   remove(id, callback) {
-    if(typeof id === 'number') {
-      let removedItem = this.items.splice(id, 1)[0]
-      
-      if(typeof callback === 'function') {
-        callback(removedItem)
-      }
+    if(typeof id !== 'number') return
 
-      return removedItem
-    }
+    let removedItem = this.items.splice(id, 1)[0]
     
-    return
+    if(typeof callback === 'function') {
+      callback(removedItem)
+    }
+
+    return removedItem    
   }
 
   // removes all items from the list and returns empty list
@@ -104,6 +99,5 @@ class TodoList {
     }
 
     return this.items
-
   }
 }
